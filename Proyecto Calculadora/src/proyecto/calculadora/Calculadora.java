@@ -40,19 +40,36 @@ public class Calculadora {
     }
     public boolean iniciaMal(){
         boolean resp=true;
-        int i=0;
         int dato=0;
-        while(cadena.charAt(i)=='('||i<cadena.length()){
-            dato=cadena.charAt(i);
+        int i=0;
+        while(i<cadena.length() && cadena.charAt(i)=='('){
             i++;
         }
-        if(cadena.charAt(dato)=='*'|| cadena.charAt(dato)=='/'||cadena.charAt(dato)=='-'||cadena.charAt(dato)=='+'){
+        if(cadena.charAt(i)=='*'|| cadena.charAt(i)=='/'||cadena.charAt(i)=='-'||cadena.charAt(i)=='+'){
             resp=false;       
            
         }
       
         return resp;
     }
+    public boolean operadoresRepetidos(){
+        boolean resp=true;
+        PilaA <Character> pilaAux = new PilaA();
+        Character elem;
+        int i=0;
+        while(i<cadena.length()) {
+            elem=cadena.charAt(i);
+            i++;
+            if(elem=='*'||elem=='/'|| elem=='+'||elem=='-'||elem=='.'){
+               if(cadena.charAt(i)==elem){
+                resp=false; 
+               }
+        }          
+        }	
+        
+        return resp;
     
+  
+    }
     
 }
