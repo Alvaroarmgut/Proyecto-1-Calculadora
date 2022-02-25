@@ -9,7 +9,7 @@ package proyecto.calculadora;
  * @author carre
  */
 public class VistaCalculadora extends javax.swing.JFrame {
-
+    private String texto = "";
     /**
      * Creates new form VistaCalculadora
      */
@@ -17,6 +17,11 @@ public class VistaCalculadora extends javax.swing.JFrame {
         initComponents();
     }
 
+    private void setBarra(String esto){
+        texto += esto;
+        barraTF.setText(texto);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -61,12 +66,27 @@ public class VistaCalculadora extends javax.swing.JFrame {
 
         negativoB.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         negativoB.setText("+/-");
+        negativoB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                negativoBActionPerformed(evt);
+            }
+        });
 
         delB.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         delB.setText("Del");
+        delB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                delBActionPerformed(evt);
+            }
+        });
 
         acB.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         acB.setText("AC");
+        acB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                acBActionPerformed(evt);
+            }
+        });
 
         ochoB.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         ochoB.setText("8");
@@ -298,67 +318,116 @@ public class VistaCalculadora extends javax.swing.JFrame {
 
     private void ochoBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ochoBActionPerformed
         // TODO add your handling code here:
+        setBarra("8");
     }//GEN-LAST:event_ochoBActionPerformed
 
     private void nueveBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nueveBActionPerformed
         // TODO add your handling code here:
+        setBarra("9");
     }//GEN-LAST:event_nueveBActionPerformed
 
     private void menosBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menosBActionPerformed
         // TODO add your handling code here:
+        setBarra("-");
     }//GEN-LAST:event_menosBActionPerformed
 
     private void sieteBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sieteBActionPerformed
         // TODO add your handling code here:
+        setBarra("7");
     }//GEN-LAST:event_sieteBActionPerformed
 
     private void cincoBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cincoBActionPerformed
         // TODO add your handling code here:
+        setBarra("5");
     }//GEN-LAST:event_cincoBActionPerformed
 
     private void seisBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seisBActionPerformed
         // TODO add your handling code here:
+        setBarra("6");
     }//GEN-LAST:event_seisBActionPerformed
 
     private void divisionBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_divisionBActionPerformed
         // TODO add your handling code here:
+        setBarra("/");
     }//GEN-LAST:event_divisionBActionPerformed
 
     private void cuatroBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cuatroBActionPerformed
         // TODO add your handling code here:
+        setBarra("4");
     }//GEN-LAST:event_cuatroBActionPerformed
 
     private void dosBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dosBActionPerformed
         // TODO add your handling code here:
+        setBarra("2");
     }//GEN-LAST:event_dosBActionPerformed
 
     private void tresBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tresBActionPerformed
         // TODO add your handling code here:
+        setBarra("3");
     }//GEN-LAST:event_tresBActionPerformed
 
     private void multiplicacionBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_multiplicacionBActionPerformed
         // TODO add your handling code here:
+        setBarra("*");
     }//GEN-LAST:event_multiplicacionBActionPerformed
 
     private void unoBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unoBActionPerformed
         // TODO add your handling code here:
+        setBarra("1");
     }//GEN-LAST:event_unoBActionPerformed
 
     private void puntoBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_puntoBActionPerformed
         // TODO add your handling code here:
+        setBarra(".");
     }//GEN-LAST:event_puntoBActionPerformed
 
     private void masBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_masBActionPerformed
         // TODO add your handling code here:
+        setBarra("+");
     }//GEN-LAST:event_masBActionPerformed
 
     private void igualBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_igualBActionPerformed
         // TODO add your handling code here:
+        setBarra("=");
     }//GEN-LAST:event_igualBActionPerformed
 
     private void ceroBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ceroBActionPerformed
         // TODO add your handling code here:
+        setBarra("0");
     }//GEN-LAST:event_ceroBActionPerformed
+
+    private void delBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delBActionPerformed
+        // TODO add your handling code here:
+        if(texto.length() != 0){
+            texto = texto.substring(0, texto.length()-1);
+            barraTF.setText(texto);
+        }
+    }//GEN-LAST:event_delBActionPerformed
+
+    private void acBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acBActionPerformed
+        // TODO add your handling code here:
+        texto = "";
+        barraTF.setText(texto);
+    }//GEN-LAST:event_acBActionPerformed
+
+    private void negativoBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_negativoBActionPerformed
+        // TODO add your handling code here:
+        int i = texto.length() - 1;
+        boolean logrado = false;
+        while(i > 0 && !logrado){
+            if(texto.charAt(i) == '+' ){
+                String primeraParte = texto.substring(i);
+                String ultimaParte = texto.substring(i, texto.length() - 1);
+                texto = primeraParte + "-" + ultimaParte;
+                logrado = true;
+            }
+            i++;
+        }
+        if(!logrado && i == 0){
+            texto = "-" + texto;
+        }
+        barraTF.setText(texto);
+    }//GEN-LAST:event_negativoBActionPerformed
 
     /**
      * @param args the command line arguments
