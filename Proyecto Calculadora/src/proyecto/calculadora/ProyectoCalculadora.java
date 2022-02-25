@@ -15,10 +15,15 @@ public class ProyectoCalculadora {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        System.out.println("sirve");
-        System.out.println("hola");
-        System.out.println("hgghg");
-        //ghhghg
+        Calculadora c1 = new Calculadora("(1+1)");
+        Calculadora c2 = new Calculadora("((-1++1)");
+        System.out.println(c1.revParentesis());
+        System.out.println(c1.iniciaMal());
+        System.out.println(c1.operadoresRepetidos());
+        
+        System.out.println(c2.revParentesis());
+        System.out.println(c2.iniciaMal());
+        System.out.println(c2.operadoresRepetidos());
     }
     
 }

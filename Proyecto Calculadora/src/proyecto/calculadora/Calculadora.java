@@ -4,8 +4,6 @@
  */
 package proyecto.calculadora;
 
-import pilas.PilaA;
-
 /**
  *
  * @author carre
@@ -19,7 +17,7 @@ public class Calculadora {
     }
      public boolean revParentesis(){
         boolean resp;
-        PilaA<Character>pila=new PilaA();
+        PilaArreglo<Character>pila=new PilaArreglo();
         for(int i=0;i<cadena.length();i++){
             if(cadena.charAt(i)=='('){
                 pila.push('(');
@@ -54,7 +52,7 @@ public class Calculadora {
     }
     public boolean operadoresRepetidos(){
         boolean resp=true;
-        PilaA <Character> pilaAux = new PilaA();
+        PilaArreglo <Character> pilaAux = new PilaArreglo();
         Character elem;
         int i=0;
         while(i<cadena.length()) {
