@@ -20,10 +20,12 @@ public class ProyectoCalculadora {
         System.out.println(c1.revParentesis());
         System.out.println(c1.iniciaMal());
         System.out.println(c1.operadoresRepetidos());
+        System.out.println(c1.postfijo());
         
         System.out.println(c2.revParentesis());
         System.out.println(c2.iniciaMal());
         System.out.println(c2.operadoresRepetidos());
+        System.out.println(c2.postfijo());
     }
     
 }

@@ -126,8 +126,8 @@ public class Calculadora {
             }
                 
         }
-        while(!pila.pilaVacia()){
-            resp.append(pila.pop);
+        while(!pila.isEmpty()){
+            resp.append(pila.pop());
         }
         return resp.toString();
     }
