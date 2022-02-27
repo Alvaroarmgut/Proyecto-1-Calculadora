@@ -424,12 +424,14 @@ public class VistaCalculadora extends javax.swing.JFrame {
         // TODO add your handling code here:
         int i = texto.length() - 1;
         boolean logrado = false;
+        String primeraParte = "";
+        String ultimaParte = "";
         while(i > 0 && !logrado){
             switch (texto.charAt(i)) {
                 case '+':
                     {
-                        String primeraParte = texto.substring(0, i);
-                        String ultimaParte = texto.substring(i + 1, texto.length());
+                        primeraParte = texto.substring(0, i);
+                        ultimaParte = texto.substring(i + 1, texto.length());
                         texto = "";
                         texto = primeraParte + "-" + ultimaParte;
                         logrado = true;
@@ -437,8 +439,21 @@ public class VistaCalculadora extends javax.swing.JFrame {
                     }
                 case '-':
                     {
-                        String primeraParte = texto.substring(0, i);
-                        String ultimaParte = texto.substring(i + 1, texto.length());
+                        if(texto.charAt(i-1) == '/' || texto.charAt(i-1) == '*' || texto.charAt(i-1) == '('){
+                            if(texto.charAt(i-1) == '('){
+                                primeraParte = texto.substring(0, i - 1);
+                                ultimaParte = texto.substring(i + 1, texto.length() - 1);
+                            }else{
+                                primeraParte = texto.substring(0, i);
+                                ultimaParte = texto.substring(i + 1, texto.length());
+                            }
+                            texto = "";
+                            texto = primeraParte + ultimaParte;
+                            logrado = true;
+                            break;
+                        }
+                        primeraParte = texto.substring(0, i);
+                        ultimaParte = texto.substring(i + 1, texto.length());
                         texto = "";
                         texto = primeraParte + "+" + ultimaParte;
                         logrado = true;
@@ -447,10 +462,10 @@ public class VistaCalculadora extends javax.swing.JFrame {
                 case '*':
                 case '/':
                     {
-                        String primeraParte = texto.substring(0, i+1);
-                        String ultimaParte = texto.substring(i+1, texto.length());
+                        primeraParte = texto.substring(0, i+1);
+                        ultimaParte = texto.substring(i+1, texto.length());
                         texto = "";
-                        texto = primeraParte + "-" + ultimaParte;
+                        texto = primeraParte + "(-" + ultimaParte + ")";
                         logrado = true;
                         break;
                     }
@@ -461,7 +476,7 @@ public class VistaCalculadora extends javax.swing.JFrame {
         }
         if(!logrado && i == 0){
             if(texto.charAt(0) != '-'){
-                texto = "-" + texto;
+                texto = "(-" + texto + ")";
             }else{
                 texto = texto.substring(1, texto.length());
             }
