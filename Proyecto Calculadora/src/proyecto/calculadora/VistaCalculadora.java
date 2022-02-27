@@ -6,7 +6,7 @@ package proyecto.calculadora;
 
 /**
  *
- * @author carre
+ * @author Alvaro Armella, Alvaro Lopez, Jimena Rodriguez, Alejandro Carregha, Emiliano Sandoval
  */
 public class VistaCalculadora extends javax.swing.JFrame {
     private String texto = "";
@@ -16,7 +16,11 @@ public class VistaCalculadora extends javax.swing.JFrame {
     public VistaCalculadora() {
         initComponents();
     }
-
+    
+    /**
+     * 
+     * @param esto: se refiere a lo que desea escribir en la pantalla de la calculadora 
+     */
     private void setBarra(String esto){
         texto += esto;
         barraTF.setText(texto);
@@ -325,87 +329,138 @@ public class VistaCalculadora extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+     * 
+     * @return String: regresa el número 8 en la pantalla 
+     */
     private void ochoBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ochoBActionPerformed
         // TODO add your handling code here:
         setBarra("8");
     }//GEN-LAST:event_ochoBActionPerformed
-
+    /**
+     * 
+     * @return String: regresa el número 9 en la pantalla
+     */
     private void nueveBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nueveBActionPerformed
         // TODO add your handling code here:
         setBarra("9");
     }//GEN-LAST:event_nueveBActionPerformed
-
+    /**
+     * 
+     * @return String: regresa el operador - (menos) en la pantalla  
+     */
     private void menosBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menosBActionPerformed
         // TODO add your handling code here:
         setBarra("-");
     }//GEN-LAST:event_menosBActionPerformed
-
+    /**
+     * 
+     * @return String: regresa el número 7 en la pantalla 
+     */
     private void sieteBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sieteBActionPerformed
         // TODO add your handling code here:
         setBarra("7");
     }//GEN-LAST:event_sieteBActionPerformed
-
+    /**
+     * 
+     * @return String: regresa el número 5 en la pantalla 
+     */
     private void cincoBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cincoBActionPerformed
         // TODO add your handling code here:
         setBarra("5");
     }//GEN-LAST:event_cincoBActionPerformed
-
+    /**
+     * 
+     * @return String: regresa el número 6 en la pantalla 
+     */
     private void seisBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seisBActionPerformed
         // TODO add your handling code here:
         setBarra("6");
     }//GEN-LAST:event_seisBActionPerformed
-
+    /**
+     * 
+     * @return String: regresa el simbolo de división en la pantalla 
+     */
     private void divisionBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_divisionBActionPerformed
         // TODO add your handling code here:
         setBarra("/");
     }//GEN-LAST:event_divisionBActionPerformed
-
+    /**
+     * 
+     * @return String: regresa el número 4 en la pantalla 
+     */
     private void cuatroBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cuatroBActionPerformed
         // TODO add your handling code here:
         setBarra("4");
     }//GEN-LAST:event_cuatroBActionPerformed
-
+    /**
+     * 
+     * @return String: regresa el número 2 en la pantalla 
+     */
     private void dosBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dosBActionPerformed
         // TODO add your handling code here:
         setBarra("2");
     }//GEN-LAST:event_dosBActionPerformed
-
+    /**
+     * 
+     * @return String: regresa el número 3 en la pantalla 
+     */
     private void tresBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tresBActionPerformed
         // TODO add your handling code here:
         setBarra("3");
     }//GEN-LAST:event_tresBActionPerformed
-
+    /**
+     * 
+     * @return String: regresa el operador de multiplicación en la pantalla 
+     */
     private void multiplicacionBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_multiplicacionBActionPerformed
         // TODO add your handling code here:
         setBarra("*");
     }//GEN-LAST:event_multiplicacionBActionPerformed
-
+    /**
+     * 
+     * @return String: regresa el número 1 en la pantalla 
+     */
     private void unoBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unoBActionPerformed
         // TODO add your handling code here:
         setBarra("1");
     }//GEN-LAST:event_unoBActionPerformed
-
+    /**
+     * 
+     * @return String: regresa el operador de decimal en la pantalla 
+     */
     private void puntoBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_puntoBActionPerformed
         // TODO add your handling code here:
         setBarra(".");
     }//GEN-LAST:event_puntoBActionPerformed
-
+    /**
+     * 
+     * @return String: regresa el operador de suma en la pantalla 
+     */
     private void masBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_masBActionPerformed
         // TODO add your handling code here:
         setBarra("+");
     }//GEN-LAST:event_masBActionPerformed
-
+    /**
+     * 
+     * @return String: regresa el resultado en la pantalla 
+     */
     private void igualBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_igualBActionPerformed
         // TODO add your handling code here:
         
     }//GEN-LAST:event_igualBActionPerformed
-
+    /**
+     * 
+     * @return String: regresa el número 0 en la pantalla 
+     */
     private void ceroBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ceroBActionPerformed
         // TODO add your handling code here:
         setBarra("0");
     }//GEN-LAST:event_ceroBActionPerformed
-
+    /**
+     * 
+     * @return String: borra una posición en la pantalla 
+     */
     private void delBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delBActionPerformed
         // TODO add your handling code here:
         if(texto.length() != 0){
@@ -413,13 +468,19 @@ public class VistaCalculadora extends javax.swing.JFrame {
             barraTF.setText(texto);
         }
     }//GEN-LAST:event_delBActionPerformed
-
+    /**
+     * 
+     * @return String: borra lo que se haya escrito en la pantalla 
+     */
     private void acBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acBActionPerformed
         // TODO add your handling code here:
         texto = "";
         barraTF.setText(texto);
     }//GEN-LAST:event_acBActionPerformed
-
+    /**
+     * 
+     * @return String: hace un cambio de signo a negativo, asegurando que no interfiera con el operador de resta
+     */
     private void negativoBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_negativoBActionPerformed
         // TODO add your handling code here:
         int i = texto.length() - 1;
