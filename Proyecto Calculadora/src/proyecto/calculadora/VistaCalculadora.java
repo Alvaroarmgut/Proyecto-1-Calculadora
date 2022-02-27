@@ -60,9 +60,19 @@ public class VistaCalculadora extends javax.swing.JFrame {
 
         parAviertoB.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         parAviertoB.setText("(");
+        parAviertoB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                parAviertoBActionPerformed(evt);
+            }
+        });
 
         ParCerradoB.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         ParCerradoB.setText(")");
+        ParCerradoB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ParCerradoBActionPerformed(evt);
+            }
+        });
 
         negativoB.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         negativoB.setText("+/-");
@@ -388,7 +398,7 @@ public class VistaCalculadora extends javax.swing.JFrame {
 
     private void igualBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_igualBActionPerformed
         // TODO add your handling code here:
-        setBarra("=");
+        
     }//GEN-LAST:event_igualBActionPerformed
 
     private void ceroBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ceroBActionPerformed
@@ -416,18 +426,40 @@ public class VistaCalculadora extends javax.swing.JFrame {
         boolean logrado = false;
         while(i > 0 && !logrado){
             if(texto.charAt(i) == '+' ){
-                String primeraParte = texto.substring(i);
-                String ultimaParte = texto.substring(i, texto.length() - 1);
+                String primeraParte = texto.substring(0, i);
+                String ultimaParte = texto.substring(i + 1, texto.length());
+                texto = "";
                 texto = primeraParte + "-" + ultimaParte;
                 logrado = true;
             }
-            i++;
+            else if(texto.charAt(i) == '-' ){
+                String primeraParte = texto.substring(0, i);
+                String ultimaParte = texto.substring(i + 1, texto.length());
+                texto = "";
+                texto = primeraParte + "+" + ultimaParte;
+                logrado = true;
+            }
+            i--;
         }
         if(!logrado && i == 0){
-            texto = "-" + texto;
+            if(texto.charAt(0) != '-'){
+                texto = "-" + texto;
+            }else{
+                texto = texto.substring(1, texto.length());
+            }
         }
         barraTF.setText(texto);
     }//GEN-LAST:event_negativoBActionPerformed
+
+    private void parAviertoBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_parAviertoBActionPerformed
+        // TODO add your handling code here:
+        setBarra("(");
+    }//GEN-LAST:event_parAviertoBActionPerformed
+
+    private void ParCerradoBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ParCerradoBActionPerformed
+        // TODO add your handling code here:
+        setBarra(")");
+    }//GEN-LAST:event_ParCerradoBActionPerformed
 
     /**
      * @param args the command line arguments
