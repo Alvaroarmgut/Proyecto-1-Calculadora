@@ -78,24 +78,24 @@ public class Calculadora {
     }
     public boolean esOperador(char n){
         boolean resp=false;
-        if(n=='*'||n=='/'|| n=='+'||n=='-'||n=='('||n==')'){
+        if(n=='*'||n=='/'|| n=='+'||n=='-'){
             resp=true;
         }
         return resp;
     }
-    
-    public boolean Precedencia(char op, char op2){
-        boolean r=false;
-        if(op=='*' || op=='/' ) r=true;
-        if(op=='+' || op=='-' && op2=='+' || op2=='-') r=true;
-        if ( op2==')')r=true;
-        return r;
+    public int estableceJerarquia(char n){
+        int resp=0;
+        if(n=='+'||n=='-')
+            resp=1;
+        if(n=='*'||n=='/')
+            resp=2;
+        return resp;
     }
+    
     public String postfijo(){
         PilaArreglo<Character>pila=new PilaArreglo();
         StringBuilder resp=new StringBuilder();
-        char simbolo;
-        String elemento;
+        char simbolo, elemento;
         for(int i=0;i<cadena.length();i++){
             simbolo=cadena.charAt(i);
             if(!esOperante(simbolo)){
@@ -105,17 +105,31 @@ public class Calculadora {
                     pila.push(simbolo);
                     
                 }else{
-                   if(simbolo)
+                   if(esOperador(simbolo)){
+                       try{
+                           while(estableceJerarquia(simbolo)<=estableceJerarquia(pila.peek())){
+                           resp.append(pila.pop());
+                           }
+                       }catch(Exception e){
+                           
+                       }
+                       
+                       pila.push(simbolo);
+                   }else{
+                       while(pila.peek()!='(')
+                           resp.append(pila.pop());
+                       pila.pop();
+                   }
                 }
                 
                 
             }
                 
         }
-        while(!Pila.pilaVacia()){
-            elemento = Pila.quitar();
-            postfija += elemento;
+        while(!pila.pilaVacia()){
+            resp.append(pila.pop);
         }
+        return resp.toString();
     }
     
     
