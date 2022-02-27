@@ -69,5 +69,75 @@ public class Calculadora {
     
   
     }
+    public boolean esOperante(char n){
+        boolean resp=false;
+        if(n=='*'||n=='/'|| n=='+'||n=='-'||n=='('||n==')'){
+            resp=true;
+        }
+        return resp;
+    }
+    public boolean esOperador(char n){
+        boolean resp=false;
+        if(n=='*'||n=='/'|| n=='+'||n=='-'||n=='('||n==')'){
+            resp=true;
+        }
+        return resp;
+    }
+    
+    public boolean Precedencia(char op, char op2){
+        boolean r=false;
+        if(op=='*' || op=='/' ) r=true;
+        if(op=='+' || op=='-' && op2=='+' || op2=='-') r=true;
+        if ( op2==')')r=true;
+        return r;
+    }
+    public String postfijo(){
+        PilaArreglo<Character>pila=new PilaArreglo();
+        StringBuilder resp=new StringBuilder();
+        char simbolo;
+        String elemento;
+        for(int i=0;i<cadena.length();i++){
+            simbolo=cadena.charAt(i);
+            if(!esOperante(simbolo)){
+                resp.append(simbolo);
+            } else{
+                if(simbolo=='('){
+                    pila.push(simbolo);
+                    
+                }else{
+                   if(simbolo)
+                }
+                
+                
+            }
+                
+        }
+        while(!Pila.pilaVacia()){
+            elemento = Pila.quitar();
+            postfija += elemento;
+        }
+    }
+    
+    
     
 }
+/*
+else{
+                while(!pila.pilaVacia() &&
+                        pila.Precedencia(pila.peek(), simbolo) ){
+                    elemento=pila.quitar();
+                    resp.append(elemento);
+                }
+                if (simbolo != ')') 
+                    pila.push(simbolo);  
+                else           
+                    pila.pop();
+            }
+        }
+        while(!Pila.pilaVacia()){
+            elemento = Pila.quitar();
+            postfija += elemento;
+        }
+    }
+
+*/
