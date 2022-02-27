@@ -425,26 +425,37 @@ public class VistaCalculadora extends javax.swing.JFrame {
         int i = texto.length() - 1;
         boolean logrado = false;
         while(i > 0 && !logrado){
-            if(texto.charAt(i) == '+' ){
-                String primeraParte = texto.substring(0, i);
-                String ultimaParte = texto.substring(i + 1, texto.length());
-                texto = "";
-                texto = primeraParte + "-" + ultimaParte;
-                logrado = true;
-            }
-            else if(texto.charAt(i) == '-' ){
-                String primeraParte = texto.substring(0, i);
-                String ultimaParte = texto.substring(i + 1, texto.length());
-                texto = "";
-                texto = primeraParte + "+" + ultimaParte;
-                logrado = true;
-            }
-            else if(texto.charAt(i) == '*' || texto.charAt(i) == '/'){
-                String primeraParte = texto.substring(0, i+1);
-                String ultimaParte = texto.substring(i+1, texto.length());
-                texto = "";
-                texto = primeraParte + "-" + ultimaParte;
-                logrado = true;
+            switch (texto.charAt(i)) {
+                case '+':
+                    {
+                        String primeraParte = texto.substring(0, i);
+                        String ultimaParte = texto.substring(i + 1, texto.length());
+                        texto = "";
+                        texto = primeraParte + "-" + ultimaParte;
+                        logrado = true;
+                        break;
+                    }
+                case '-':
+                    {
+                        String primeraParte = texto.substring(0, i);
+                        String ultimaParte = texto.substring(i + 1, texto.length());
+                        texto = "";
+                        texto = primeraParte + "+" + ultimaParte;
+                        logrado = true;
+                        break;
+                    }
+                case '*':
+                case '/':
+                    {
+                        String primeraParte = texto.substring(0, i+1);
+                        String ultimaParte = texto.substring(i+1, texto.length());
+                        texto = "";
+                        texto = primeraParte + "-" + ultimaParte;
+                        logrado = true;
+                        break;
+                    }
+                default:
+                    break;
             }
             i--;
         }
