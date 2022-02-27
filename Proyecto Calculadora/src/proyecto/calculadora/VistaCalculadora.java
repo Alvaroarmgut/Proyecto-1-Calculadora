@@ -424,33 +424,59 @@ public class VistaCalculadora extends javax.swing.JFrame {
         // TODO add your handling code here:
         int i = texto.length() - 1;
         boolean logrado = false;
+        String primeraParte = "";
+        String ultimaParte = "";
         while(i > 0 && !logrado){
-            if(texto.charAt(i) == '+' ){
-                String primeraParte = texto.substring(0, i);
-                String ultimaParte = texto.substring(i + 1, texto.length());
-                texto = "";
-                texto = primeraParte + "-" + ultimaParte;
-                logrado = true;
-            }
-            else if(texto.charAt(i) == '-' ){
-                String primeraParte = texto.substring(0, i);
-                String ultimaParte = texto.substring(i + 1, texto.length());
-                texto = "";
-                texto = primeraParte + "+" + ultimaParte;
-                logrado = true;
-            }
-            else if(texto.charAt(i) == '*' || texto.charAt(i) == '/'){
-                String primeraParte = texto.substring(0, i+1);
-                String ultimaParte = texto.substring(i+1, texto.length());
-                texto = "";
-                texto = primeraParte + "-" + ultimaParte;
-                logrado = true;
+            switch (texto.charAt(i)) {
+                case '+':
+                    {
+                        primeraParte = texto.substring(0, i);
+                        ultimaParte = texto.substring(i + 1, texto.length());
+                        texto = "";
+                        texto = primeraParte + "-" + ultimaParte;
+                        logrado = true;
+                        break;
+                    }
+                case '-':
+                    {
+                        if(texto.charAt(i-1) == '/' || texto.charAt(i-1) == '*' || texto.charAt(i-1) == '('){
+                            if(texto.charAt(i-1) == '('){
+                                primeraParte = texto.substring(0, i - 1);
+                                ultimaParte = texto.substring(i + 1, texto.length() - 1);
+                            }else{
+                                primeraParte = texto.substring(0, i);
+                                ultimaParte = texto.substring(i + 1, texto.length());
+                            }
+                            texto = "";
+                            texto = primeraParte + ultimaParte;
+                            logrado = true;
+                            break;
+                        }
+                        primeraParte = texto.substring(0, i);
+                        ultimaParte = texto.substring(i + 1, texto.length());
+                        texto = "";
+                        texto = primeraParte + "+" + ultimaParte;
+                        logrado = true;
+                        break;
+                    }
+                case '*':
+                case '/':
+                    {
+                        primeraParte = texto.substring(0, i+1);
+                        ultimaParte = texto.substring(i+1, texto.length());
+                        texto = "";
+                        texto = primeraParte + "(-" + ultimaParte + ")";
+                        logrado = true;
+                        break;
+                    }
+                default:
+                    break;
             }
             i--;
         }
         if(!logrado && i == 0){
             if(texto.charAt(0) != '-'){
-                texto = "-" + texto;
+                texto = "(-" + texto + ")";
             }else{
                 texto = texto.substring(1, texto.length());
             }
