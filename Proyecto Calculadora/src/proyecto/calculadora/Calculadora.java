@@ -4,6 +4,8 @@
  */
 package proyecto.calculadora;
 
+import pilas.PilaA;
+
 /**
  *
  * @author carre
@@ -101,24 +103,30 @@ public class Calculadora {
             if(!esOperante(simbolo)){
                 resp.append(simbolo);
             } else{
+                if(simbolo!='('){
+                resp.append(" ");
+                }
                 if(simbolo=='('){
                     pila.push(simbolo);
-                    
                 }else{
                    if(esOperador(simbolo)){
                        try{
                            while(estableceJerarquia(simbolo)<=estableceJerarquia(pila.peek())){
-                           resp.append(pila.pop());
+                        	   //resp.append('[');
+                               resp.append(pila.pop());
                            }
                        }catch(Exception e){
                            
                        }
-                       
+
                        pila.push(simbolo);
+
                    }else{
-                       while(pila.peek()!='(')
-                           resp.append(pila.pop());
+                       while(pila.peek()!='('){
+                       resp.append(pila.pop());
+                       }
                        pila.pop();
+
                    }
                 }
                 
@@ -127,10 +135,58 @@ public class Calculadora {
                 
         }
         while(!pila.isEmpty()){
+            resp.append(" ");
             resp.append(pila.pop());
+
         }
         return resp.toString();
     }
+    
+    
+}
+    
+    public char evaluar(String postfija){
+        char[]expresion = postfija.toCharArray();
+        //Pila de salida y pila de entrada
+        char simboloEntrada,op1,op2,valor=0;
+        PilaArreglo<Character>pila=new PilaArreglo();
+        for(int i=0;i<expresion.length;i++){
+            simboloEntrada = postfija.charAt(i);
+            if(!esOperante(simboloEntrada)){
+                pila.push(simboloEntrada);
+            }
+            else {
+ 
+                op1= pilita.pop();
+                op2= pilita.pop();
+                valor=(char)evaluate(simboloEntrada,op1,op2);
+ 
+                pilita.push(valor);
+            }
+        }
+        return valor;
+ 
+    }
+static int evaluate (char cad, char a, char b ){
+    int op1=a-48;
+    int op2=b-48;
+    if(cad== '-')
+        return op1-op2;
+ 
+    if(cad== '+')
+        return op1+op2;
+ 
+    if(cad== '/')
+        return op1/op2;
+ 
+    if(cad== '*')
+        return op1*op2;
+ 
+ 
+    return 0;
+    }
+}
+    
     
     
     
