@@ -4,8 +4,6 @@
  */
 package proyecto.calculadora;
 
-import pilas.PilaA;
-
 /**
  *
  * @author carre
@@ -139,58 +137,61 @@ public class Calculadora {
             resp.append(pila.pop());
 
         }
-        return resp.toString();
+        return resp.toString() + " ";
     }
     
-    
-}
-    
-    public char evaluar(String postfija){
-        char[]expresion = postfija.toCharArray();
-        //Pila de salida y pila de entrada
-        char simboloEntrada,op1,op2,valor=0;
-        PilaArreglo<Character>pila=new PilaArreglo();
-        for(int i=0;i<expresion.length;i++){
-            simboloEntrada = postfija.charAt(i);
-            if(!esOperante(simboloEntrada)){
-                pila.push(simboloEntrada);
+    public double resuelve(String postfija){
+        double resp;
+        char valor;
+        double op1, op2;
+        PilaArreglo <Double>pila=new PilaArreglo();
+        StringBuilder elemento=new StringBuilder();
+        for(int i=0;i<postfija.length();i++){
+            valor=postfija.charAt(i);
+            if(valor != ' '){
+                elemento.append(valor);
+            } else{
+                if(!esOperador(elemento.toString().charAt(0))){
+                    pila.push(Double.parseDouble(elemento.toString()));
+                    elemento.setLength(0);
+                } else{
+                    op2 = pila.pop();
+                    op1 = pila.pop();
+                    pila.push(evaluar(elemento.toString().charAt(0), op1, op2));
+                    elemento.setLength(0);
+                }
             }
-            else {
- 
-                op1= pilita.pop();
-                op2= pilita.pop();
-                valor=(char)evaluate(simboloEntrada,op1,op2);
- 
-                pilita.push(valor);
+          
+        }
+        
+    resp=pila.pop();
+    return resp;
+    }
+    
+    public double evaluar (char cad, double a, double b ){
+        double resp;
+        if(cad=='-'){
+            resp=a-b;
+        }else{
+            if(cad=='+'){
+                resp=a+b;
+            }else{
+                if(cad=='*'){
+                    resp=a*b;
+                }else{
+                    resp=a/b;
+                }
+                
+
             }
         }
-        return valor;
- 
-    }
-static int evaluate (char cad, char a, char b ){
-    int op1=a-48;
-    int op2=b-48;
-    if(cad== '-')
-        return op1-op2;
- 
-    if(cad== '+')
-        return op1+op2;
- 
-    if(cad== '/')
-        return op1/op2;
- 
-    if(cad== '*')
-        return op1*op2;
- 
- 
-    return 0;
+        return resp;
     }
 }
     
     
     
     
-}
 /*
 else{
                 while(!pila.pilaVacia() &&

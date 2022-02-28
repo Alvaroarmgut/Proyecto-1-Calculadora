@@ -15,17 +15,12 @@ public class ProyectoCalculadora {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        Calculadora c1 = new Calculadora("(1+1)");
-        Calculadora c2 = new Calculadora("((-1++1)");
+        Calculadora c1 = new Calculadora("(((1+2)*2)/2)-1");
         System.out.println(c1.revParentesis());
         System.out.println(c1.iniciaMal());
         System.out.println(c1.operadoresRepetidos());
         System.out.println(c1.postfijo());
-        
-        System.out.println(c2.revParentesis());
-        System.out.println(c2.iniciaMal());
-        System.out.println(c2.operadoresRepetidos());
-        System.out.println(c2.postfijo());
+        System.out.println(c1.resuelve(c1.postfijo()));
     }
     
 }
