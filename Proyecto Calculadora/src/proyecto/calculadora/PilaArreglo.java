@@ -1,12 +1,15 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+/**
+ * <pre>
+ * Clase PilaArreglo
+ * 
+ * Contiene la funcionalidad de una pila 
+ * </pre>
  */
 package proyecto.calculadora;
 
 /**
  *
- * @author carre
+ * @author Alejandro Carregha, Emiliano Sandoval
  */
 public class PilaArreglo <T> implements PilaADT<T>{
     private T[] datosPila;
@@ -18,7 +21,10 @@ public class PilaArreglo <T> implements PilaADT<T>{
         tope = -1;
     }
     
-    
+    /**
+     * 
+     * @param datos: dato que se desea agregar a la pila 
+     */
     public void push(T datos){
         if(tope == this.datosPila.length - 1)
             expand();
@@ -34,17 +40,28 @@ public class PilaArreglo <T> implements PilaADT<T>{
         tope --;
         return temp;
     }
-    
+    /**
+     * 
+     * @return <ul>
+     *         <li> true: si la pila esta vacia  </li>
+     *         <li> false: si la pila no esta vacia </li>
+     *         </ul>
+     */
     public boolean isEmpty(){
         return tope == -1;
     }
-    
+    /**
+     * 
+     * @return T: regresa el dato que este en el tope de la pila 
+     */
     public T peek(){
         if(tope == -1)
             throw new ColeccionVaciaExcepcion("La pila esta vacia");
         return this.datosPila[tope];
     }
-    
+    /**
+     * @return String: duplica el tamaño de la pila 
+     */
     private void expand(){
         T[] masGrande = (T[]) new Object[this.datosPila.length * 2];
         for(int i = 0; i <= tope; i++){
@@ -52,7 +69,10 @@ public class PilaArreglo <T> implements PilaADT<T>{
         }
         datosPila = masGrande;
     }
-
+    /**
+     * 
+     * @return String: regresa los datos de la pila 
+     */
     public String toString() {
         StringBuilder sb = new StringBuilder();
         for(int i = tope; i >= 0; i--){
