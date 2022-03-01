@@ -1,20 +1,33 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+/**
+ * <pre>
+ * Clase VistaCalculadora
+ * 
+ * Contiene la funcionalidad de la calculadora 
+ * </pre>
  */
 package proyecto.calculadora;
 
 /**
  *
- * @author carre
+ * @author  Alvaro Armella, Alvaro Lopez, Jimena Rodriguez, Alejandro Carregha, Emiliano Sandoval
  */
 public class Calculadora {
     private String cadena;
     
-    
+    /**
+     * 
+     * @param unaExpresion: representa una expresión String 
+     */
     public Calculadora(String unaExpresion){
         cadena=unaExpresion;
     }
+    /**
+     * Revisa si lo que se tiene en la cadena es un parentesis
+     * @return <ul>
+     *      <li> true: si la pila esta vacia </li> 
+     *      <li> false: si la pila no esta vacia  </li> 
+     *      </ul>
+     */
      public boolean revParentesis(){
         boolean resp;
         PilaArreglo<Character>pila=new PilaArreglo();
@@ -36,6 +49,13 @@ public class Calculadora {
         }
         return resp;
     }
+     /**
+      * Analiza el sintaxis asegurando de que la expresion no empiece por un operador 
+      * @return <ul>
+      *         <li> true: si la cadena inicia con parentesis izquierdo </li>
+      *         <li> false: si se encuentra cualquier otro operador     </li>
+      * </ul>
+      */
     public boolean iniciaMal(){
         boolean resp=true;
         int dato=0;
@@ -44,12 +64,18 @@ public class Calculadora {
             i++;
         }
         if(cadena.charAt(i)=='*'|| cadena.charAt(i)=='/'||cadena.charAt(i)=='-'||cadena.charAt(i)=='+'){
-            resp=false;       
-           
+            resp=false;      
         }
       
         return resp;
     }
+    /**
+     * Analiza el sintaxis asegurando que no haya operadores juntos
+     * @return <ul>
+     *         <li> true: si el operador no esta repetido   </li>
+     *         <li> false: si el operador esta repetido     </li>
+     *         </ul>
+     */ 
     public boolean operadoresRepetidos(){
         boolean resp=true;
         PilaArreglo <Character> pilaAux = new PilaArreglo();
@@ -69,6 +95,11 @@ public class Calculadora {
     
   
     }
+    /**
+     * 
+     * @param n: una variable x, sea un operante u operador
+     * @return String: regresa si la variable es un operante 
+     */
     public boolean esOperante(char n){
         boolean resp=false;
         if(n=='*'||n=='/'|| n=='+'||n=='-'||n=='('||n==')'){
@@ -76,6 +107,14 @@ public class Calculadora {
         }
         return resp;
     }
+    /**
+     * Analiza si la variable es un operador 
+     * @param n: una variable x, sea un operante u operador 
+     * @return <ul>
+     *         <li> true: si n es un operador </li>
+     *         <li> false: si n no es un operador </li>
+     *         </ul>
+     */
     public boolean esOperador(char n){
         boolean resp=false;
         if(n=='*'||n=='/'|| n=='+'||n=='-'){
@@ -83,6 +122,11 @@ public class Calculadora {
         }
         return resp;
     }
+    /**
+     * Regresa un numero entero, 2 siendo los operadores con mayor jerarquia y 1 los de menor
+     * @param n: un operador 
+     * @return int: regresa el numero mayor conforme a la jerarquia de operadores
+     */
     public int estableceJerarquia(char n){
         int resp=0;
         if(n=='+'||n=='-')
@@ -91,7 +135,10 @@ public class Calculadora {
             resp=2;
         return resp;
     }
-    
+    /**
+     * Metodo para traducir de notacion infija a postfija 
+     * @return String: regresa la cadena representada en notación postfijo 
+     */
     public String postfijo(){
         PilaArreglo<Character>pila=new PilaArreglo();
         StringBuilder resp=new StringBuilder();
@@ -139,7 +186,11 @@ public class Calculadora {
         }
         return resp.toString() + " ";
     }
-    
+    /**
+     * Regresa el resultado de las operaciones que estaban en la cadena postfija
+     * @param postfija: cadena en notacion postfijo
+     * @return double: resultado de las operaciones de la cadena postfija 
+     */
     public double resuelve(String postfija){
         double resp;
         char valor;
@@ -167,7 +218,13 @@ public class Calculadora {
     resp=pila.pop();
     return resp;
     }
-    
+    /**
+     * Regresa el resultado de la operacion en base a el operador que encuentra 
+     * @param cad: operador 
+     * @param a: un numero
+     * @param b: otro numero 
+     * @return double: resultado de la operacion 
+     */
     public double evaluar (char cad, double a, double b ){
         double resp;
         if(cad=='-'){

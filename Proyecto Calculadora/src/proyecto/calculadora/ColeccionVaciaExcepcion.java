@@ -1,19 +1,25 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+/**
+ * <pre>
+ * Clase ColeccionVaciaExcepcion
+ * 
+ * Contiene la expcecion 
+ * </pre>
  */
 package proyecto.calculadora;
 
 /**
  *
- * @author carre
+ * @author Alejandro Carregha
  */
 public class ColeccionVaciaExcepcion extends RuntimeException {
-
+    
     public ColeccionVaciaExcepcion() {
         super();
     }
-    
+    /**
+     * 
+     * @param mensaje: mensaje que se quiere dar al lanzar la excepcion 
+     */
     public ColeccionVaciaExcepcion(String mensaje) {
         super(mensaje);
     }
