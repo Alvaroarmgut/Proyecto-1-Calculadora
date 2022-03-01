@@ -1,12 +1,15 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
+/**
+ * <pre>
+ * Clase Pilas
+ * 
+ * Contiene el main de la clase PilaArreglo 
+ * </pre>
  */
 package proyecto.calculadora;
 
 /**
  *
- * @author carre
+ * @author Alejandro Carregha, Emiliano Sandoval 
  */
 public class Pilas {
     public static void main(String[] args) {
