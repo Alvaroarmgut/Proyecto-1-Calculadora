@@ -137,6 +137,7 @@ public class Calculadora {
     }
     /**
      * Metodo para traducir de notacion infija a postfija 
+     * @see: esOperante, esOperador, estableceJerarquia 
      * @return String: regresa la cadena representada en notación postfijo 
      */
     public String postfijo(){
@@ -189,6 +190,7 @@ public class Calculadora {
     /**
      * Regresa el resultado de las operaciones que estaban en la cadena postfija
      * @param postfija: cadena en notacion postfijo
+     * @see esOperador
      * @return double: resultado de las operaciones de la cadena postfija 
      */
     public double resuelve(String postfija){
