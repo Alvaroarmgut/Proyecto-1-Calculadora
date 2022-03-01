@@ -451,8 +451,13 @@ public class VistaCalculadora extends javax.swing.JFrame {
         if(!c1.iniciaMal() || !c1.operadoresRepetidos() || !c1.revParentesis()){
             barraTF.setText("ERROR");
         } else{
+            try{
             texto = "" + c1.resuelve(c1.postfijo());
             barraTF.setText(texto);
+            } catch(Exception e){
+                texto = "";
+                barraTF.setText("ERROR");
+            }
         }
         
             
