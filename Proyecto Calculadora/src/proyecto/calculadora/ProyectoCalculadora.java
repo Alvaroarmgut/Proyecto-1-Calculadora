@@ -1,12 +1,15 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
+/**
+ * <pre>
+ * Clase ProyectoCalculadora
+ * 
+ * Contiene el main del proyecto
+ * </pre>
  */
 package proyecto.calculadora;
 
 /**
  *
- * @author carre
+ * @author Alvaro Armella, Alvaro Lopez, Jimena Rodriguez, Alejandro Carregha, Emiliano Sandoval
  */
 public class ProyectoCalculadora {
 
