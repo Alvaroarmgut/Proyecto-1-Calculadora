@@ -1,20 +1,30 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+/**
+ * <pre>
+ * Clase VistaCalculadora
+ * 
+ * Contiene la funcionalidad de la calculadora 
+ * </pre>
  */
 package proyecto.calculadora;
 
 /**
  *
- * @author carre
+ * @author  Alvaro Armella, Alvaro Lopez, Jimena Rodriguez, Alejandro Carregha, Emiliano Sandoval
  */
 public class Calculadora {
     private String cadena;
     
-    
+    /**
+     * 
+     * @param unaExpresion: representa una expresión String 
+     */
     public Calculadora(String unaExpresion){
         cadena=unaExpresion;
     }
+    /**
+     * 
+     * @return String: analiza si la cadena contiene un parentesis
+     */
      public boolean revParentesis(){
         boolean resp;
         PilaArreglo<Character>pila=new PilaArreglo();
@@ -36,6 +46,10 @@ public class Calculadora {
         }
         return resp;
     }
+     /**
+      * 
+      * @return String: Analiza el sintaxis asegurando de que la expresion no empiece por un operador 
+      */
     public boolean iniciaMal(){
         boolean resp=true;
         int dato=0;
@@ -50,6 +64,10 @@ public class Calculadora {
       
         return resp;
     }
+    /**
+     * 
+     * @return String: Analiza el sintaxis asegurando que no haya operadores juntos
+     */
     public boolean operadoresRepetidos(){
         boolean resp=true;
         PilaArreglo <Character> pilaAux = new PilaArreglo();
@@ -69,6 +87,11 @@ public class Calculadora {
     
   
     }
+    /**
+     * 
+     * @param n: una variable x, sea un operante u operador
+     * @return String: regresa si la variable es un operante 
+     */
     public boolean esOperante(char n){
         boolean resp=false;
         if(n=='*'||n=='/'|| n=='+'||n=='-'||n=='('||n==')'){
@@ -76,6 +99,11 @@ public class Calculadora {
         }
         return resp;
     }
+    /**
+     * 
+     * @param n: una variable x, sea un operante u operador 
+     * @return String: Analiza si la variable es un operador 
+     */
     public boolean esOperador(char n){
         boolean resp=false;
         if(n=='*'||n=='/'|| n=='+'||n=='-'){
@@ -83,6 +111,11 @@ public class Calculadora {
         }
         return resp;
     }
+    /**
+     * 
+     * @param n: un operador 
+     * @return String: regresa un numero entero, 2 siendo los operadores con mayor jerarquia y 1 los de menor
+     */
     public int estableceJerarquia(char n){
         int resp=0;
         if(n=='+'||n=='-')
@@ -91,7 +124,10 @@ public class Calculadora {
             resp=2;
         return resp;
     }
-    
+    /**
+     * 
+     * @return String: regresa la cadena representada en notación postfijo 
+     */
     public String postfijo(){
         PilaArreglo<Character>pila=new PilaArreglo();
         StringBuilder resp=new StringBuilder();
@@ -139,7 +175,11 @@ public class Calculadora {
         }
         return resp.toString() + " ";
     }
-    
+    /**
+     * 
+     * @param postfija: cadena en notacion postfijo
+     * @return String: regresa el resultado de las operaciones que estaban en la cadena postfija
+     */
     public double resuelve(String postfija){
         double resp;
         char valor;
@@ -167,7 +207,13 @@ public class Calculadora {
     resp=pila.pop();
     return resp;
     }
-    
+    /**
+     * 
+     * @param cad: operador 
+     * @param a: un numero
+     * @param b: otro numero 
+     * @return String: Regresa el resultado de la operacion en base a el operador que encuentra 
+     */
     public double evaluar (char cad, double a, double b ){
         double resp;
         if(cad=='-'){
