@@ -22,8 +22,11 @@ public class Calculadora {
         cadena=unaExpresion;
     }
     /**
-     * 
-     * @return String: analiza si la cadena contiene un parentesis
+     * Revisa si lo que se tiene en la cadena es un parentesis
+     * @return <ul>
+     *      <li> true: si la pila esta vacia </li> 
+     *      <li> false: si la pila no esta vacia  </li> 
+     *      </ul>
      */
      public boolean revParentesis(){
         boolean resp;
@@ -47,8 +50,11 @@ public class Calculadora {
         return resp;
     }
      /**
-      * 
-      * @return String: Analiza el sintaxis asegurando de que la expresion no empiece por un operador 
+      * Analiza el sintaxis asegurando de que la expresion no empiece por un operador 
+      * @return <ul>
+      *         <li> true: si la cadena inicia con parentesis izquierdo </li>
+      *         <li> false: si se encuentra cualquier otro operador     </li>
+      * </ul>
       */
     public boolean iniciaMal(){
         boolean resp=true;
@@ -58,16 +64,18 @@ public class Calculadora {
             i++;
         }
         if(cadena.charAt(i)=='*'|| cadena.charAt(i)=='/'||cadena.charAt(i)=='-'||cadena.charAt(i)=='+'){
-            resp=false;       
-           
+            resp=false;      
         }
       
         return resp;
     }
     /**
-     * 
-     * @return String: Analiza el sintaxis asegurando que no haya operadores juntos
-     */
+     * Analiza el sintaxis asegurando que no haya operadores juntos
+     * @return <ul>
+     *         <li> true: si el operador no esta repetido   </li>
+     *         <li> false: si el operador esta repetido     </li>
+     *         </ul>
+     */ 
     public boolean operadoresRepetidos(){
         boolean resp=true;
         PilaArreglo <Character> pilaAux = new PilaArreglo();
@@ -100,9 +108,12 @@ public class Calculadora {
         return resp;
     }
     /**
-     * 
+     * Analiza si la variable es un operador 
      * @param n: una variable x, sea un operante u operador 
-     * @return String: Analiza si la variable es un operador 
+     * @return <ul>
+     *         <li> true: si n es un operador </li>
+     *         <li> false: si n no es un operador </li>
+     *         </ul>
      */
     public boolean esOperador(char n){
         boolean resp=false;
@@ -112,9 +123,9 @@ public class Calculadora {
         return resp;
     }
     /**
-     * 
+     * Regresa un numero entero, 2 siendo los operadores con mayor jerarquia y 1 los de menor
      * @param n: un operador 
-     * @return String: regresa un numero entero, 2 siendo los operadores con mayor jerarquia y 1 los de menor
+     * @return int: regresa el numero mayor conforme a la jerarquia de operadores
      */
     public int estableceJerarquia(char n){
         int resp=0;
@@ -125,7 +136,7 @@ public class Calculadora {
         return resp;
     }
     /**
-     * 
+     * Metodo para traducir de notacion infija a postfija 
      * @return String: regresa la cadena representada en notación postfijo 
      */
     public String postfijo(){
@@ -176,9 +187,9 @@ public class Calculadora {
         return resp.toString() + " ";
     }
     /**
-     * 
+     * Regresa el resultado de las operaciones que estaban en la cadena postfija
      * @param postfija: cadena en notacion postfijo
-     * @return String: regresa el resultado de las operaciones que estaban en la cadena postfija
+     * @return double: resultado de las operaciones de la cadena postfija 
      */
     public double resuelve(String postfija){
         double resp;
@@ -208,11 +219,11 @@ public class Calculadora {
     return resp;
     }
     /**
-     * 
+     * Regresa el resultado de la operacion en base a el operador que encuentra 
      * @param cad: operador 
      * @param a: un numero
      * @param b: otro numero 
-     * @return String: Regresa el resultado de la operacion en base a el operador que encuentra 
+     * @return double: resultado de la operacion 
      */
     public double evaluar (char cad, double a, double b ){
         double resp;
