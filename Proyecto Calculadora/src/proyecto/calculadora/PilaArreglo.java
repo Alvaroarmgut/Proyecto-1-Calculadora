@@ -5,14 +5,16 @@
  * Contiene la funcionalidad de una pila 
  * </pre>
  */
+
 package proyecto.calculadora;
 
 /**
  *
  * @author Alejandro Carregha, Emiliano Sandoval
  */
-public class PilaArreglo <T> implements PilaADT<T>{
-    private T[] datosPila;
+
+public class PilaArreglo <T> implements PilaADT<T>{ //implementa la interface 
+    private T[] datosPila; //Se construye la pila a partir de un arreglo auxiliar
     private int tope;
     private final int MAX = 20;
 
@@ -25,6 +27,7 @@ public class PilaArreglo <T> implements PilaADT<T>{
      * 
      * @param datos: dato que se desea agregar a la pila 
      */
+    
     public void push(T datos){
         if(tope == this.datosPila.length - 1)
             expand();
@@ -40,6 +43,7 @@ public class PilaArreglo <T> implements PilaADT<T>{
         tope --;
         return temp;
     }
+    
     /**
      * 
      * @return <ul>
@@ -47,40 +51,43 @@ public class PilaArreglo <T> implements PilaADT<T>{
      *         <li> false: si la pila no esta vacia </li>
      *         </ul>
      */
+    
     public boolean isEmpty(){
-        return tope == -1;
+        return tope == -1; //evalua si hay datos o no
     }
+    
     /**
      * 
      * @return T: regresa el dato que este en el tope de la pila 
      */
+    
     public T peek(){
         if(tope == -1)
             throw new ColeccionVaciaExcepcion("La pila esta vacia");
         return this.datosPila[tope];
     }
+    
     /**
-     * @return String: duplica el tamaño de la pila 
+     * @return String: duplica el tamaï¿½o de la pila 
      */
-    private void expand(){
+    
+    private void expand(){ //Metodo auxiliar para aumentar el tamaÃ±o de la pila en caso de que se termine el esapcio del arreglo auxiliar
         T[] masGrande = (T[]) new Object[this.datosPila.length * 2];
-        for(int i = 0; i <= tope; i++){
+        for(int i = 0; i <= tope; i++)
             masGrande[i] = datosPila[i];
-        }
         datosPila = masGrande;
     }
+    
     /**
      * 
      * @return String: regresa los datos de la pila 
      */
+    
     public String toString() {
         StringBuilder sb = new StringBuilder();
         for(int i = tope; i >= 0; i--){
             sb.append(datosPila[i]);
         }
         return sb.toString();
-    }
-    
-    
-    
+    }   
 }
