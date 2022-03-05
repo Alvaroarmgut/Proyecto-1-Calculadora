@@ -5,14 +5,16 @@
  * Contiene el main de la clase PilaArreglo 
  * </pre>
  */
+
 package proyecto.calculadora;
 
 /**
  *
  * @author Alejandro Carregha, Emiliano Sandoval 
  */
+
 public class Pilas {
-    public static void main(String[] args) {
+    public static void main(String[] args) { //Pruebas del funcionamiento de una pila
         PilaArreglo<String> dias = new PilaArreglo();
         PilaArreglo<Integer> edades = new PilaArreglo();
         PilaArreglo pila = new PilaArreglo();
