@@ -18,6 +18,7 @@ public class ColeccionVaciaExcepcion extends RuntimeException {
     public ColeccionVaciaExcepcion() {
         super();
     }
+    
     /**
      * 
      * @param mensaje: mensaje que se quiere dar al lanzar la excepcion 
